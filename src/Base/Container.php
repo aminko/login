@@ -16,13 +16,11 @@ class Container {
 
     public function get($name) 
     {
-        if($this->has($name)) {
-            return $this->container[$name];
-        }
+        return $this->has($name);
     }
 
     public function has($name)
     {
-        return isset($this->container[$name]);
+        return isset($this->container[$name]) ? $this->container[$name] : null;
     }
 }

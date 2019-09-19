@@ -7,11 +7,17 @@ use Demo\Base\Container;
 
 try {
     
+    //dependencies
     $container = new Container();
 
-    //dependencies..
-   
-    // start
+    $services = require_once __DIR__ . "/Config/Service.php";
+    
+    // initialize providers 
+    foreach( $services as $service) {
+        $provider = new $service($container);
+        $provider->init();
+    }
+    
     $app = new App($container);
     $app->run();
 

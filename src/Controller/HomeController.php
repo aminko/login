@@ -4,9 +4,9 @@ namespace Demo\Controller;
 
 use Demo\Base\Controller;
 
-class AppController extends Controller {
+class HomeController extends Controller {
     // TODO: extend with router class
-    public function show($request)
+    public function index($request)
     {
         $title = '';
 

@@ -6,21 +6,40 @@ class Container {
 
     private $container;
 
-   
-    public function set($name, $value)
+   /**
+    * Set dependency to container
+    *
+    * @param string $name
+    * @param object $value
+    * @return this
+    */
+    public function set($serviceName, $value)
     {
-        $this->container[$name] = $value;
+        $this->container[$serviceName] = $value;
         
         return $this;
     }
 
-    public function get($name) 
+    /**
+     * Gets dependency from container if it exists
+     * Otherwise returns null   
+     *
+     * @param string $name
+     * @return (object | null)
+     */
+    public function get($serviceName) 
     {
-        return $this->has($name);
+        return $this->has($serviceName);
     }
 
-    public function has($name)
+    /**
+     * Check if dependency with given name exists in container
+     *
+     * @param string $name
+     * @return (object | null)
+     */
+    public function has($serviceName)
     {
-        return isset($this->container[$name]) ? $this->container[$name] : null;
+        return isset($this->container[$serviceName]) ? $this->container[$serviceName] : null;
     }
 }

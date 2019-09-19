@@ -1,0 +1,20 @@
+{
+    "name": "minko/demo",
+    "type": "project",
+    "description": "Demo project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aminko",
+            "email": "minko@example.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Demo\\": "src/" 
+        }
+    },
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}

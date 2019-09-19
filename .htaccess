@@ -1,0 +1,24 @@
+#prevents issue with "index" contoller and "index.php" file
+Options -MultiViews
+
+# enable human readable links
+RewriteEngine On
+
+# disable directory lookup
+Options -Indexes
+
+# as explained on StackOverflow 
+# https://stackoverflow.com/questions/41575026/why-is-rewritecond-request-filename-d-mandatory
+# if not directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# if not existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+# and if not a symbolic link
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# then use following rule:
+# Take whole request (URL path) and send as a parameter to index.php
+# Then take the last (rightmost) question mark from url and use it as delimiter for 
+# query string (QSL) https://httpd.apache.org/docs/2.4/rewrite/flags.html
+# Then stop processing current .htaccess file (L).
+RewriteRule ^(.+)$ index.php?url=$1 [QSL,L]

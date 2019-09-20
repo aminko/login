@@ -11,8 +11,7 @@ class RouterProvider extends AbstractProvider
 
     public function init()
     {
-        //FIXME: replace with config
-        $router = new Router('http://127.0.0.1/public/');
+        $router = new Router(APP_HOST_URL);
 
         $this->container->set($this->serviceName, $router);
     }

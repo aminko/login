@@ -21,15 +21,15 @@ class App {
     {
         try{
             $this->router->add('home', '/', 'HomeController@index');
-            $this->router->add('task', '/task/4', 'TaskController@show');
-            //print_r(Request::getPath());
+            $this->router->add('task', '/task/{id:int}', 'TaskController@show');
+           
             $routerDispatch = $this->router->dispatch(Request::getMethod(), Request::getPath());
             //print_r($routerDispatch);
     
             if($routerDispatch === null) {
                 $routerDispatch = new RouterDispatcher('ErrorController@notFound');
             }
-    
+            //print_r($routerDispatch);
             list($controller, $method) = explode('@', $routerDispatch->getController(), 2);
             $controller = "\\Demo\\Controller\\" . $controller;
             //var_dump($controller, $method);

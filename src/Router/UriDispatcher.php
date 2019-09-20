@@ -33,8 +33,9 @@ class UriDispatcher
             'POST' => []
         ];
 
+        // \d+ is same as [0-9]+
         $this->patterns = [
-            'int' => '[0-9]+'
+            'int' => '\d+'
         ];
     }
 
@@ -58,7 +59,21 @@ class UriDispatcher
 
     public function register($method, $pattern, $controller)
     {
-        $this->routes[strtoupper($method)][$pattern] = $controller;
+        $verifiedPattern = $this->verifyPattern($pattern);
+        $this->routes[strtoupper($method)][$verifiedPattern] = $controller;
+    }
+
+    private function verifyPattern($pattern)
+    {
+        if(strpos($pattern, '{') === false) {
+            return $pattern;
+        }
+
+        return preg_replace_callback('#\{(\w+):(\w+)\}#',
+               function($matches){
+                return '(?<' . $matches[1] . '>' . strtr($matches[2], $this->patterns) . ')';
+               },
+               $pattern);
     }
 
     private function routes($method)
@@ -70,10 +85,26 @@ class UriDispatcher
     {
         foreach($this->routes($method) as $route => $controller) {
            $pattern = '#^' . $route . '$#s';
-           if(preg_match($pattern, $path, $match)) {
-               return new RouterDispatcher($controller,  $match);
+
+           if(preg_match($pattern, $path, $parameters)) {
+
+               $parameters = $this->filterParameters($parameters);
+
+               return new RouterDispatcher($controller, $parameters);
            }
             
         }
+    }
+
+    private function filterParameters($parameters)
+    {
+        foreach($parameters as $key => $parameter) {
+            
+            if(is_int($key)) {
+                unset($parameters[$key]);
+            }
+        }
+
+        return $parameters;
     }
 }

@@ -20,11 +20,9 @@ class App {
     public function run()
     {
         try{
-            $this->router->add('home', '/', 'HomeController@index');
-            $this->router->add('task', '/task/{id:int}', 'TaskController@show');
+            require_once __DIR__ . '/../Router/Routes.php';
            
             $routerDispatch = $this->router->dispatch(Request::getMethod(), Request::getPath());
-            //print_r($routerDispatch);
     
             if($routerDispatch === null) {
                 $routerDispatch = new RouterDispatcher('ErrorController@notFound');

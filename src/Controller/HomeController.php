@@ -9,8 +9,7 @@ class HomeController extends Controller {
     public function index()
     {
         $title = 'Minko';
-
-        echo $this->view->render('home.twig', ['title' => $title]);
+        return $this->view->render('home.twig', ['title' => $title]);
     }
 
 }

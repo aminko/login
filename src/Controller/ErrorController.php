@@ -8,6 +8,6 @@ class ErrorController extends Controller
 {
     public function notFound()
     {
-       echo $this->view->render('error404.twig', []);
+       return $this->view->render('error404.twig', []);
     }
 }

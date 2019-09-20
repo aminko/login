@@ -19,7 +19,7 @@ class App {
 
     public function run()
     {
-        try{
+        try {
             require_once __DIR__ . '/../Router/Routes.php';
            
             $routerDispatch = $this->router->dispatch(Request::getMethod(), Request::getPath());

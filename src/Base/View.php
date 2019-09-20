@@ -25,6 +25,6 @@ class View
     public function render($view, $params = [])
     {
         // Render the template
-         return $this->view->render($view, $params);
+         echo $this->view->render($view, $params);
     }
 }

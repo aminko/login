@@ -6,13 +6,9 @@ use Demo\Base\Controller;
 
 class HomeController extends Controller {
     // TODO: extend with router class
-    public function index($request)
+    public function index()
     {
-        $title = '';
-
-        if(isset($request->title)){
-            $title = $request->title;
-        }
+        $title = 'Minko';
 
         echo $this->view->render('home.twig', ['title' => $title]);
     }

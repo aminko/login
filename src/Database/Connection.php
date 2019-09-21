@@ -29,16 +29,16 @@ class Connection {
         return $this->connection;
     }
 
-    public function execute($sql)
+    public function execute($sql, $values = [])
     {
         $query = $this->connection->prepare($sql);
-        $query->execute();
+        $query->execute($values);
     }
 
-    public function fetch($sql)
+    public function fetch($sql, $values = [])
     {
         $query = $this->connection->prepare($sql);
-        $query->execute();
+        $query->execute($values);
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         

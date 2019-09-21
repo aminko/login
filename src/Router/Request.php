@@ -42,4 +42,20 @@ class Request
         return $path;
     }
 
+    public function back()
+    {
+        $path = $this->server['HTTP_REFERER'];
+        if(empty($path)) {
+           $path = '/';
+        }
+
+        header('Location: ' . $path);
+        exit;
+    }
+
+    public function redirect($path)
+    {
+        header('Location: ' . $path);
+        exit;
+    }
 }

@@ -12,7 +12,7 @@ if($auth->isLoggedIn()) {
 } elseif(!$auth->isLoggedIn()) {
     //public routes
     $this->router->add('login', '/login', 'AuthController@login');
-    $this->router->add('validate','/login/validate', 'AuthController@validate');
+    $this->router->add('validate','/login/auth', 'AuthController@authenticate', 'POST');
     $this->router->add('register', '/register', 'AuthController@register');
-    $this->router->add('registration','/register/new', 'AuthController@registration');
+    $this->router->add('registration','/register/new', 'AuthController@registration',  'POST');
 } 

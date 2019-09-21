@@ -9,14 +9,14 @@ class AuthController extends Controller
     public function login()
     {
         // return login view
-        echo "Login form";
+        return $this->view->render('login.twig', []);
     }
 
-    public function validate()
+    public function authenticate()
     {
         $params = $this->request->post;
         print_r($params);
-        echo "Validate request";
+        echo "Authentication proccess";
     }
 
     public function register()

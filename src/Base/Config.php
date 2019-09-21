@@ -24,7 +24,7 @@ class Config
         $path = __DIR__ . '/../Config/' . mb_strtolower($group) . '.php';
 
         if(file_exists($path)) {
-            $config = require_once $path;
+            $config = require $path;
 
             if(is_array($config)) {
                 return $config;

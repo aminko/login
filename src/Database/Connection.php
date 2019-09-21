@@ -3,6 +3,7 @@
 namespace Demo\Database;
 
 use \PDO;
+Use Demo\Base\Config;
 
 class Connection {
 
@@ -14,14 +15,8 @@ class Connection {
     }
 
     private function connect()
-    {
-        //FIXME: replace with real config 
-        $config = [
-            "host" => "127.0.0.1",
-            "dbname" => "demo",
-            "username" => "app",
-            "password" => "root"
-        ];
+    { 
+        $config = Config::file('database');
 
         $dsn =  "mysql:host=".$config['host'].";dbname=".$config['dbname']; //TODO: check encoding issue
         $this->connection = new PDO($dsn, $config['username'], $config['password']);

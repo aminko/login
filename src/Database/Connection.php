@@ -24,6 +24,11 @@ class Connection {
         return $this;
     }
 
+    public function getConnection()
+    {
+        return $this->connection;
+    }
+
     public function execute($sql)
     {
         $query = $this->connection->prepare($sql);

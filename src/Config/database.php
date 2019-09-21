@@ -2,7 +2,7 @@
 
 return [
     "host" => "127.0.0.1",
-    "dbname" => "db",
-    "username" => "username",
-    "password" => "password",
+    "dbname" => "demo",
+    "username" => "app",
+    "password" => "root",
 ];

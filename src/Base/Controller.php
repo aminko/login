@@ -10,6 +10,8 @@ class Controller
     protected $container;
     protected $config;
     protected $request;
+    protected $auth;
+
 
     public function __construct(Container $container)
     {
@@ -17,5 +19,6 @@ class Controller
         $this->view = $container->get('view');
         $this->config = $container->get('config');
         $this->request = $container->get('request');
+        $this->auth = $container->get('auth');
     }
 }

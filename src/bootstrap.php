@@ -6,7 +6,6 @@ use Demo\Base\App;
 use Demo\Base\Container;
 
 try {
-    define('APP_HOST_URL', '127.0.0.1/public');
 
     //dependencies
     $container = new Container();

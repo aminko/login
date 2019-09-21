@@ -6,4 +6,5 @@ return [
     Demo\Service\View\ViewProvider::class,
     Demo\Service\Config\ConfigProvider::class,
     Demo\Service\Request\RequestProvider::class,
+    Demo\Service\Auth\AuthProvider::class,
 ];

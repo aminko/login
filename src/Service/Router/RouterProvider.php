@@ -4,6 +4,7 @@ namespace Demo\Service\Router;
 
 use Demo\Service\AbstractProvider;
 use Demo\Router\Router;
+use Demo\Base\Config;
 
 class RouterProvider extends AbstractProvider
 {
@@ -11,7 +12,8 @@ class RouterProvider extends AbstractProvider
 
     public function init()
     {
-        $router = new Router(APP_HOST_URL);
+        $config = Config::file('app');
+        $router = new Router($config['base_url']);
 
         $this->container->set($this->serviceName, $router);
     }

@@ -15,6 +15,7 @@
         }
     },
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "delight-im/auth": "^8.1"
     }
 }

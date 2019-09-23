@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="assets/style/style.css">
 </head>
+
 <body>
-    
-    <h2>Hello {{ title }}</h2>
+    <div class="menu-wrapper flexible">
+        <ul class="flexible">
+            <li><a href="/">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+        <form action="/auth/logout" method="post">
+            <input type="hidden" name="user_action" value="logout">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <div class="main-content-wrapper">
+        <p>Logged in as: {{email}}</p>
+        <div id="task-form-wrapper">
+            <h2>Add Task</h2>
+            <form id="task-form">
+                <div class="row">
+                    <div class="six columns">
+                        <label for="task-name">Task name</label>
+                        <input type="text" name="name" class="u-full-width" id="task-name">
+                    </div>
+                    <div class="six columns">
+                        <label for="task-description">Description</label>
+                        <textarea name="details" class="u-full-width" id="task-description" value=""></textarea>
+                    </div>
+                    <input type="submit" value="Add" class="button button-primary medium">
+                </div>
+
+            </form>
+        </div>
+        <table id="task-list">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="/assets/js/app.js"></script>
+    <script>
+        const ui = new UI();
+        ui.init(
+            document.querySelector('#task-list tbody'),
+            document.querySelector('#task-form'),
+            document.querySelector('#task-form-wrapper'),
+            { 
+                root: '{{base_url}}',
+                tasks: '{{base_url}}/tasks',
+                addTask: '{{base_url}}/tasks/save',
+            }
+        );
+    </script>
 </body>
+
 </html>

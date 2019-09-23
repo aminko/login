@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/assets/style/style.css">
+</head>
+<body>
+    <div class="menu-wrapper flexible">
+        <ul class="flexible">
+            <li><a href="/">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+        <form action="/auth/logout" method="post">
+            <input type="hidden" name="user_action" value="logout">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+        <div class="main-content-wrapper">
+
+        <div class="flexible">
+            <h2>Profile details</h2>
+            <a href="/profile/edit" class="button button-primary medium">Edit</a>
+        </div>
+        <p>Last updated: <em>{{ updated_at is empty ? "No updates" : updated_at|date("m/d/Y") }}</em></p>
+        <ul>
+            <li>First name: {{ first_name is empty ? "Not specified" : first_name}}</li>
+            <li>Last name: {{ last_name is empty ? "Not specified" : last_name}}</li>
+            <li>Title: {{ title is empty ? "Not specified" : title }}</li>
+        </ul>
+
+        </div>
+</body>
+</html>

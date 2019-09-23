@@ -2,7 +2,7 @@
 
 return [
     "host" => "127.0.0.1",
-    "dbname" => "demo",
-    "username" => "app",
-    "password" => "root",
+    "dbname" => getenv('DB_NAME'),
+    "username" => getenv('DB_USERNAME'),
+    "password" => getenv('DB_PASSWORD'),
 ];

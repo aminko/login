@@ -3,6 +3,7 @@
 namespace Demo\Controller;
 
 use Demo\Base\Controller;
+use Demo\Model\ProfileRepository;
 
 class RegistrationController extends Controller
 {
@@ -25,10 +26,19 @@ class RegistrationController extends Controller
         $response = $this->proccessRegistration($request);
 
         if($response['status'] === true) {
-            
+            $this->createProfile($response['body']);
             $this->auth->admin()->logInAsUserById($response['body']);
             $this->request->redirect('/');
         }
+
+        $this->request->redirect('/registration');
+    }
+
+    private function createProfile($userId)
+    {
+        $user = new ProfileRepository($this->container);
+        $params = ['user_id' => $userId];
+        $user->createProfile($params);
     }
 
     /**

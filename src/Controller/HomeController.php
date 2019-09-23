@@ -8,8 +8,10 @@ class HomeController extends Controller {
     // TODO: extend with router class
     public function index()
     {
-        $title = 'Minko';
-        return $this->view->render('home.twig', ['title' => $title]);
+           
+        $email = $this->auth->getEmail();
+        $baseUrl = $this->config['app']['base_url'];
+        return $this->view->render('home.twig', ['email' => $email, 'base_url' => $baseUrl]);
     }
 
 }

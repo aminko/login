@@ -1,3 +1,73 @@
-h1 {
-    color: rebeccapurple;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    margin: 0;
+}
+.menu-wrapper {
+    box-sizing: content-box;
+    height: 3em;
+    padding: .5em .3em;
+    background-color: rgb(227, 227, 227);
+    border-bottom: 1px solid #ccc;
+}
+.main-content-wrapper {
+    width: 90%;
+    padding-top: 2em;
+    margin: 0 auto;
+}
+
+.flexible {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ul {
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu-wrapper ul li {
+    margin-right: 1.25em;
+    margin-left: 1.25em;
+    
+}
+
+a.medium {
+    font-size: 0.75em;
+}
+
+.user-form {
+    padding: 2em;
+    border: 2px solid #f2f2f2;
+}
+
+.error {
+    background-color: orangered;
+    padding: 1em 0.4em;
+    border: 1px solid #ccc;
+}
+.success {
+    background-color: mediumseagreen;
+    padding: 1em 0.4em;
+    border: 1px solid #ccc;
+}
+.task-item.delete {
+    padding: .25em 0.4em;
+    color: crimson;
+    text-decoration: none;
+}
+
+#task-list {
+    margin-top: 1em;
+    width: 100%;
+    border-spacing: 0 1em;
+}
+
+thead td {
+    border-bottom: 1px solid #ccc;
 }

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "host" => "127.0.0.1",
+    "host" => getenv('DB_HOST'),
     "dbname" => getenv('DB_NAME'),
     "username" => getenv('DB_USERNAME'),
     "password" => getenv('DB_PASSWORD'),

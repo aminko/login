@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'base_url' => 'http://127.0.0.1',
+    'base_url' => getenv('APP_BASE_URL'),
 ];

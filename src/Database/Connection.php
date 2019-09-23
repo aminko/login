@@ -32,7 +32,7 @@ class Connection {
     public function execute($sql, $values = [])
     {
         $query = $this->connection->prepare($sql);
-        $query->execute($values);
+        return $query->execute($values);
     }
 
     public function fetch($sql, $values = [])
@@ -49,5 +49,9 @@ class Connection {
         return $result;
     }
 
+    public function lastInsertId()
+    {
+        return $this->connection->lastInsertId();
+    }
 
 }
